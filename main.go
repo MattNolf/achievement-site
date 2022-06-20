@@ -49,7 +49,11 @@ var site = `
 			var x = document.getElementById("registerButton");
 			x.style.display = "none";
 
-			document.cookie = "registeredEmail" + "=" + registeredEmail
+			var now = new Date();
+			var expireTime = now.getTime() + (3600 * 1000 * 24 * 365);
+			now.setTime(expireTime);
+
+			document.cookie = "registeredEmail" + "=" + registeredEmail + ";expires=" +now.toUTCString()
 
 			var xhr = new XMLHttpRequest();
 			xhr.open("POST", "https://achievement.dev/register_interest", true);
