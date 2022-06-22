@@ -10,7 +10,7 @@ import (
 	"github.com/mehanizm/airtable"
 )
 
-var site = `
+var site = fmt.Sprintf(`
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +32,7 @@ var site = `
 	</style>
 </head>
 <body onload="hasRegistered()">
-	<img src="assets/logo.png" alt="Achievement.dev" width="100%">
+	<img src="assets/logo.png" alt="Achievement.dev" width="100%%">
 	<div style="text-align:center;font-family:Inconsolata,monospace;">	
 		<p id="cs">Coming soon...</p>	
 		<button id="registerButton" onclick="register()" class="astext">(Register interest)</button>
@@ -56,7 +56,7 @@ var site = `
 			document.cookie = "registeredEmail" + "=" + registeredEmail + ";expires=" +now.toUTCString()
 
 			var xhr = new XMLHttpRequest();
-			xhr.open("POST", "https://achievement.dev/register_interest", true);
+			xhr.open("POST", "%s/register_interest", true);
 			xhr.setRequestHeader('Content-Type', 'application/json');
 			xhr.send(JSON.stringify({
 				email: registeredEmail
@@ -76,7 +76,7 @@ var site = `
 	</script>
 </body>
 </html>
-`
+`, os.Getenv("API_HOSTNAME"))
 
 var client *airtable.Client
 var table *airtable.Table

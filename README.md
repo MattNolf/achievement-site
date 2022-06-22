@@ -12,7 +12,7 @@ go mod tidy
 
 Run the project with required environment variables:
 ```
-AIRTABLE_API_KEY=SECET AIRTABLE_DATABASE_ID=did AIRTABLE_TABLE_ID=tid go run main.go
+AIRTABLE_API_KEY=SECET AIRTABLE_DATABASE_ID=did AIRTABLE_TABLE_ID=tid API_HOSTNAME=http://localhost:8080 go run main.go
 ```
 
 ### Build
